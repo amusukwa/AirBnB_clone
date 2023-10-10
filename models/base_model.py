@@ -13,7 +13,13 @@ class BaseModel():
     """This class represents the BaseModel"""
 
     def __init__(self, *args, **kwargs):
-        """Initialized instance attributes"""
+        """Initialized instance attributes
+
+        Args:
+            - *args: List of arguments
+            - **kwargs: dictionary of key/values arguments
+        """
+
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
