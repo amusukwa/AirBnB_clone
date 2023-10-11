@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/python3
 """
 The BaseModel module
 This class will be the "base" of all other classes in this project
@@ -7,7 +7,7 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
-from .engine.file_storage import FileStorage
+from models import storage
 
 
 class BaseModel():
@@ -44,8 +44,6 @@ class BaseModel():
         """
         updates the public instance attribute updated_at with the current datetime
         """
-        storage = FileStorage()
-        storage.reload()
         self.updated_at = datetime.now()
         storage.save()
 
