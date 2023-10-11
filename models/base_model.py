@@ -7,6 +7,7 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
+from .engine.file_storage import FileStorage
 
 
 class BaseModel():
@@ -31,6 +32,7 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """
@@ -42,7 +44,10 @@ class BaseModel():
         """
         updates the public instance attribute updated_at with the current datetime
         """
+        storage = FileStorage()
+        storage.reload()
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
