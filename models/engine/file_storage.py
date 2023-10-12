@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
 import json
-
+import models
 
 class FileStorage:
     __file_path = "file.json"
@@ -31,8 +30,9 @@ class FileStorage:
                 data = json.load(file)
                 for key, value in data.items():
                     class_name, obj_id = key.split('.')
-                    cls = models[class_name]
+                    cls = models.__dict__[class_name]  # Get the class from models module
                     obj = cls(**value)
                     self.__objects[key] = obj
         except FileNotFoundError:
             pass
+

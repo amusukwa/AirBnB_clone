@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/pythion3
 """
 The BaseModel module
 This class will be the "base" of all other classes in this project
@@ -7,7 +7,10 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
-from models import storage
+from engine.file_storage import FileStorage
+
+storage = FileStorage()
+storage.reload()                      
 
 
 class BaseModel():
