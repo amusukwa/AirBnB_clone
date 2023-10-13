@@ -1,9 +1,4 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-
-
-=======
->>>>>>> storeFirstObject
 import json
 
 
