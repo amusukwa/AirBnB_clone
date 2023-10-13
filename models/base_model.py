@@ -7,7 +7,6 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
-from models  import storage
                      
 
 
@@ -21,7 +20,7 @@ class BaseModel():
             - *args: List of arguments
             - **kwargs: dictionary of key/values arguments
         """
-
+        from models  import storage
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -45,6 +44,7 @@ class BaseModel():
         """
         updates the public instance attribute updated_at with the current datetime
         """
+        from models  import storage
         self.updated_at = datetime.now()
         storage.save()
 
