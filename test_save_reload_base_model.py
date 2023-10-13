@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-
-from models.engine.file_storage import FileStorage
-
-storage = FileStorage()
-storage.reload()                      
-=======
 from models import storage
->>>>>>> storeFirstObject
 from models.base_model import BaseModel
 
 all_objs = storage.all()
