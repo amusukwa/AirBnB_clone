@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 import json
+from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
+    CLASS_MAPPING = {'BaseModel': BaseModel, 'User': User}
 
     def all(self):
         """Returns the dictionary __objects."""
@@ -26,15 +29,15 @@ class FileStorage:
     def reload(self):
         """Deserializes the JSON file to __objects (if it exists)."""
         from models.base_model import BaseModel
+        from models.user import User
         try:
             with open(self.__file_path, "r") as file:
                 data = json.load(file)
                 for key, value in data.items():
                     class_name, obj_id = key.split('.')
-                   # cls = models.__dict__[class_name]  
-                    #obj = cls(**value)
-                    obj = BaseModel(**value)
-                    self.__objects[key] = obj
+                    cls = self.CLASS_MAPPING.get(class_name)
+                    if cls:
+                        obj = cls(**value)
+                        self.__objects[key] = obj
         except FileNotFoundError:
             pass
-
