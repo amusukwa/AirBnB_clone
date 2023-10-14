@@ -9,7 +9,7 @@ import uuid
 from datetime import datetime
 
 
-Class BaseModel():
+class BaseModel():
     """This class represents the BaseModel"""
 
     def __init__(self, *args, **kwargs):
