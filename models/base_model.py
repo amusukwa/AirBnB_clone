@@ -19,7 +19,7 @@ class BaseModel():
             - *args: List of arguments
             - **kwargs: dictionary of key/values arguments
         """
-        from models  import storage
+        from models import storage
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -41,15 +41,15 @@ class BaseModel():
 
     def save(self):
         """
-        updates public instance attribute updated_at with  current datetime
+        updates public instance  updated_at with  current datetime
         """
-        from models  import storage
+        from models import storage
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
         """
-        returns dictionary containing all keys/values of __dict__ of the instance
+        returns all dictionary keys/values of __dict__
         """
         class_name = self.__class__.__name__
         return {
