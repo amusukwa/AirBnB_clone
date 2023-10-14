@@ -7,10 +7,9 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
-                     
 
 
-class BaseModel():
+Class BaseModel():
     """This class represents the BaseModel"""
 
     def __init__(self, *args, **kwargs):
@@ -42,7 +41,7 @@ class BaseModel():
 
     def save(self):
         """
-        updates the public instance attribute updated_at with the current datetime
+        updates public instance attribute updated_at with  current datetime
         """
         from models  import storage
         self.updated_at = datetime.now()
@@ -50,7 +49,7 @@ class BaseModel():
 
     def to_dict(self):
         """
-        returns a dictionary containing all keys/values of __dict__ of the instance
+        returns dictionary containing all keys/values of __dict__ of the instance
         """
         class_name = self.__class__.__name__
         return {
