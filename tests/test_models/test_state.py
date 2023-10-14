@@ -2,6 +2,7 @@ import unittest
 from models.base_model import BaseModel
 from models.state import State
 
+
 class TestState(unittest.TestCase):
     def test_inheritance(self):
         state = State()
@@ -13,6 +14,6 @@ class TestState(unittest.TestCase):
         """Check if the default attributes are set correctly"""
         self.assertEqual(state.name, "")
 
+
 if __name__ == '__main__':
     unittest.main()
-
