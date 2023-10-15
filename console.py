@@ -2,9 +2,11 @@
 """This is the entry point of the command interpreter"""
 
 
+import argparse
 import cmd
 from models.base_model import BaseModel
 from models import storage
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -118,6 +120,42 @@ class HBNBCommand(cmd.Cmd):
                     all_objects[obj_key].save()
             else:
                 print("** no instance found **")
+
+        def default(self, line):
+            """Module for customized model commands"""
+            line_list = line.split('.')
+            if len(line_list) >= 2:
+                model_name = line_list[0]
+                command = line_list[1]
+
+                if command == "all()":
+                    self.do_all(model_name)
+                elif command == "count()":
+                    self.count(model_name)
+                elif command.startswith("show"):
+                    args = command.split()
+                    if len(args) == 2:
+                        self.do_show(f"{model_name} {args[1]}")
+                    else:
+                        print("Invalid show command")
+                elif command.startswith("destroy"):
+                    args = command.split()
+                    if len(args) == 2:
+                        self.do_destroy(f"{model_name} {args[1]}")
+                    else:
+                        print("Invalid destroy command")
+                elif command.startswith("update"):
+                    args = command.split()
+                    if len(args) == 4:
+                        key = f"{model_name} {args[1]}"
+                        attribute = args[2]
+                        value = args[3].strip('""')
+                        self.do_update(f'{key} {attribute} "{value}"')
+                    else:
+                        print("Invalid update command")
+                else:
+                    cmd.Cmd.default(self, line)
+
 
 
 if __name__ == '__main__':
