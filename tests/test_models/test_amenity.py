@@ -3,6 +3,7 @@ from models.city import City
 
 
 class TestCity(unittest.TestCase):
+    # This class tests the City class
     def test_city_attributes(self):
         # Create a City instance
         city = City()

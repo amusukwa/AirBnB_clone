@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+The Place module
+"""
 from models.base_model import BaseModel
 
 
