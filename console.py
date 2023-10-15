@@ -22,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def empty_line(self):
+    def emptyline(self):
         """Empty line doesn't execute anything"""
         pass
 
@@ -155,7 +155,6 @@ class HBNBCommand(cmd.Cmd):
                         print("Invalid update command")
                 else:
                     cmd.Cmd.default(self, line)
-
 
 
 if __name__ == '__main__':
