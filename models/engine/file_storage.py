@@ -26,10 +26,25 @@ class FileStorage:
         with open(self.__file_path, "w") as file:
             json.dump(serialized_objects, file)
 
-    def reload(self):
-        """Deserializes the JSON file to __objects (if it exists)."""
+    def classes(self):
+        """Retuens a dict of valid classes plus their references"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.state import State
+
+        classes = {"BaseModel": BaseModel,
+                   "User": User,
+                   "Amenity": Amenity,
+                   "City": City,
+                   "Place": Place,
+                   "State": State}
+        return classes
+
+    def reload(self):
+        """Deserializes the JSON file to __objects (if it exists)."""
         try:
             with open(self.__file_path, "r") as file:
                 data = json.load(file)
@@ -41,3 +56,54 @@ class FileStorage:
                         self.__objects[key] = obj
         except FileNotFoundError:
             pass
+
+    def attributes(self):
+        """Returns valid atteibutes for each class name"""
+        attributes = {
+                "BaseModel": {
+                    "id": str,
+                    "created_at": datetime.datetime,
+                    "updated_at": datetime.datetime
+                },
+
+                "User": {
+                    "email": str,
+                    "password": str,
+                    "first_name": str,
+                    "last_name": str
+                },
+
+                "Place": {
+                    "city_id": str,
+                    "user_id": str,
+                    "name": str,
+                    "description": str,
+                    "number_rooms": int,
+                    "number_bathrooms": int,
+                    "max_guest": int,
+                    "price_by_night": int,
+                    "latitude": float,
+                    "longitude": float,
+                    "amenity_ids": list
+                },
+
+                "State": {
+                    "name": str
+                },
+
+                "City": {
+                    "state_id": str,
+                    "name": str
+                },
+
+                "Amenity": {
+                    "name": str
+                },
+
+                "Review": {
+                    "place_id": str,
+                    "user_id": str,
+                    "text": str
+                }
+        }
+        return attributes
