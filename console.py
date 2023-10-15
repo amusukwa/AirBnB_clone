@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             try:
-                new_instance = storage.classes()
+                new_instance = BaseModel()
                 new_instance.save()
                 print(new_instance.id)
             except Exception:
@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Dletes an instance based on class name and id"""
+        """Deletes an instance based on class name and id"""
         args = arg.split()
         if not args:
             print("** class name missing **")
