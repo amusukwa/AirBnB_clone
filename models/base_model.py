@@ -7,9 +7,10 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
+import models 
 
 
-class BaseModel():
+class BaseModel:
     """This class represents the BaseModel"""
 
     def __init__(self, *args, **kwargs):
@@ -19,8 +20,7 @@ class BaseModel():
             - *args: List of arguments
             - **kwargs: dictionary of key/values arguments
         """
-        from models import storage
-
+        
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -33,7 +33,7 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -46,9 +46,8 @@ class BaseModel():
         """
         updates public instance  updated_at with  current datetime
         """
-        from models import storage
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
