@@ -18,9 +18,11 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.base_instance.updated_at, datetime)
 
     def test_save_method(self):
-        original_updated_at = self.base_instance.updated_at
-        self.base_instance.save()
-        self.assertNotEqual(original_updated_at, self.base_instance.updated_at)
+        model = BaseModel()
+        original_updated_at = model.updated_at
+        model.save()
+        newly_updated_at = model.updated_at
+        self.assertNotEqual(newly_updated_at, original_updated_at)
 
     def test_to_dict_method(self):
         obj_dict = self.base_instance.to_dict()
