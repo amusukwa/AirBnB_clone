@@ -7,7 +7,6 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
-from models import storage
 
 
 class BaseModel():
@@ -42,6 +41,7 @@ class BaseModel():
                                      self.id, self.__dict__)
 
     def save(self):
+        from models import storage
         """
         updates public instance  updated_at with  current datetime
         """
