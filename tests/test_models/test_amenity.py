@@ -1,26 +1,30 @@
 import unittest
-from models.city import City
+from models.amenity import Amenity
 
+class TestAmenity(unittest.TestCase):
+    def test_default_attributes(self):
+        amenity = Amenity()
+        self.assertEqual(amenity.name, "")
 
-class TestCity(unittest.TestCase):
-    def test_city_attributes(self):
-        # Create a City instance
-        city = City()
-
-        # Check if the default attributes are as expected
-        self.assertEqual(city.state_id, "")
-        self.assertEqual(city.name, "")
-
-    def test_city_str_representation(self):
-        # Create a City instance and set attributes
-        city = City()
-        city.state_id = "12345"
-        city.name = "New York"
-
-        # Check the string representation
-        expected_str = "[City] ({}) {}".format(city.id, city.__dict__)
-        self.assertEqual(str(city), expected_str)
+    def test_name_assignment(self):
+        amenity = Amenity()
+        amenity.name = "Pool"
+        self.assertEqual(amenity.name, "Pool")
+    
+    def test_str_representation(self):
+        amenity = Amenity()
+        amenity.name = "Gym"
+        expected_str = "[Amenity] ({}) {}".format(amenity.id, amenity.__dict__)
+        self.assertEqual(str(amenity), expected_str)
+        
+    def test_to_dict_method(self):
+        amenity = Amenity()
+        amenity.name = "Sauna"
+        obj_dict = amenity.to_dict()
+        self.assertEqual(obj_dict["name"], "Sauna")
+        self.assertEqual(obj_dict["__class__"], "Amenity")
 
 
 if __name__ == '__main__':
-    unittest.main()
+                                                                                                                                                            unittest.main()
+
