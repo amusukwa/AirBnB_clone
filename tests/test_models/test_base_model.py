@@ -30,6 +30,11 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue('created_at' in obj_dict)
         self.assertTrue('updated_at' in obj_dict)
 
+    def test_str_representation(self):
+        model = BaseModel()
+        expected_str = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
+        self.assertEqual(str(model), expected_str)
+
 
 if __name__ == '__main__':
     unittest.main()
