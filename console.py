@@ -121,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-        def default(self, line):
+    def default(self, line):
             """Module for customized model commands"""
             line_list = line.split('.')
             if len(line_list) >= 2:
