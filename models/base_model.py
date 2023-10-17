@@ -7,7 +7,7 @@ This class will be the "base" of all other classes in this project
 
 import uuid
 from datetime import datetime
-import models
+import models 
 
 
 class BaseModel:
@@ -20,7 +20,7 @@ class BaseModel:
             - *args: List of arguments
             - **kwargs: dictionary of key/values arguments
         """
-
+        
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
