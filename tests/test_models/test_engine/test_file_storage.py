@@ -36,16 +36,16 @@ class TestFileStorage(unittest.TestCase):
                 )
             self.assertTrue(key in data)
 
-    def test_reload_method(self):
-        self.base_instance.save()
-        new_storage = FileStorage()
-        new_storage.reload()
-        objects = new_storage.all()
-        key = "{}.{}".format(
-                self.base_instance.__class__.__name__,
-                self.base_instance.id
-            )
-        self.assertTrue(key in objects)
+        def test_reload_method(self):
+            self.base_instance.save()
+            new_storage = FileStorage()
+            new_storage.reload()
+            objects = new_storage.all()
+            key = "{}.{}".format(
+                    self.base_instance.__class__.__name__,
+                    self.base_instance.id
+                )
+            self.assertTrue(key in objects)
 
 
 if __name__ == '__main__':
