@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             try:
-                new_instance = BaseModel()
+                new_instance = User()
                 new_instance.save()
                 print(new_instance.id)
             except Exception:
@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_objects[obj_key]
                 storage.save()
             else:
-                print("** no instance found **")
+                print("** class doesn't exist **"i)
 
     def do_all(self, arg):
         """
