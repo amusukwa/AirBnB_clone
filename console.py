@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_objects[obj_key]
                 storage.save()
             else:
-                print("** class doesn't exist **"i)
+                print("** class doesn't exist **")
 
     def do_all(self, arg):
         """
